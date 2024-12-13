@@ -4,13 +4,11 @@ const homeRouter = require('./home.js');
 const othersRouter = require('./others.js');
 
 function route(app) {
+  app.use('/news', newsRouter); // app sử dụng path /news và truyền vào newsRouter
 
-    app.use('/news', newsRouter); // app sử dụng path /news và truyền vào newsRouter
+  app.use('/search', othersRouter);
 
-    app.use('/search', othersRouter);
-
-    app.use('/', homeRouter);
-
+  app.use('/', homeRouter);
 }
 
 module.exports = route;

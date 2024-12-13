@@ -9,9 +9,11 @@ const route = require('./routes'); // tự động nạp file index.js trong th�
 
 // để lấy file từ trong public
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({
-  extended: true
-})); // middleware để lấy dữ liệu từ form data
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+); // middleware để lấy dữ liệu từ form data
 
 app.use(express.json()); // gửi dữ liệu từ client lên server dưới dạng json
 
@@ -19,9 +21,12 @@ app.use(express.json()); // gửi dữ liệu từ client lên server dưới d�
 //app.use(morgan('combined'));
 
 //Template engine
-app.engine('hbs', handlebars.engine({
-  extname: '.hbs'
-}));
+app.engine(
+  'hbs',
+  handlebars.engine({
+    extname: '.hbs',
+  }),
+);
 app.set('view engine', 'hbs');
 //__dirname là đường dẫn tuyệt đối của thư mục chứa file hiện tại
 app.set('views', path.join(__dirname, 'resources', 'views'));
@@ -53,4 +58,4 @@ route(app);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
-})
+});
