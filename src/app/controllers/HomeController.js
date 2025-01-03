@@ -1,7 +1,11 @@
+const Course = require('../models/Course');
+
 class HomeController {
   // [GET] /news
-  index(req, res) {
-    res.render('home'); // home.hbs trong views
+  index(req, res, next) {
+    Course.find({}).lean()         
+      .then(courses => res.render('home', { courses })) // Nếu không có lỗi, trả về home.hbs và truyền vào một object chứa thông tin courses
+      .catch(next);                           // Nếu có lỗi, xử lý lỗi và trả về một trạng thái lỗi hoặc thông báo
   }
 
   // [GET] /news/:slug

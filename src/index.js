@@ -6,6 +6,10 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes'); // tự động nạp file index.js trong thư mục routes
+const db = require('./config/db');
+
+// Connect to DB
+db.connect();
 
 // để lấy file từ trong public
 app.use(express.static(path.join(__dirname, 'public')));
