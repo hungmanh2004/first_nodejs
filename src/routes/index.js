@@ -1,5 +1,6 @@
 // Nơi tìm tuyến đường dựa trên path
 const newsRouter = require('./news.js');
+const meRouter = require('./me.js');
 const homeRouter = require('./home.js');
 const othersRouter = require('./others.js');
 const coursesRouter = require('./courses.js');
@@ -9,7 +10,9 @@ function route(app) {
 
   app.use('/search', othersRouter);
 
-  app.use('/course', coursesRouter);
+  app.use('/courses', coursesRouter);
+
+  app.use('/me', meRouter);
 
   app.use('/', homeRouter);
 }
